@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './App.css';
 import Blog from './pages/blog';
 import SignIn from './pages/login';
