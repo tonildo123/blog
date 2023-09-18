@@ -48,8 +48,8 @@ const Posts = () => {
 
 
     return (
-        <Box sx={{ flexGrow: 1, margin: '1%' }}>
-            <Box sx={{ flexGrow: 1, textAlign: 'center', marginBottom: '1rem', backgroundColor: 'white' }}>
+        <Box sx={{ margin: '1%' }}>
+            <Box sx={{ textAlign: 'center', marginBottom: '1rem', backgroundColor: 'white' }}>
                 <Typography variant="h4" gutterBottom color="grey">
                     Novedades
                 </Typography>

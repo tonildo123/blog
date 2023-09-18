@@ -5,7 +5,7 @@ import { Typography, Card, CardActionArea, CardContent, CardMedia, Grid, Button 
 const CardPosts = ({ lastPost, posts }) => {
   return (
     <Grid container spacing={2}>
-      <Grid item md={6} xs={12} height='100vh'>
+      <Grid item md={6} xs={12}>
         {lastPost.map((lastPostItem) => ( 
           <CardActionArea component="a" href="#" key={lastPostItem.id}>
             <Card sx={{ height: '100%' }}>
@@ -35,7 +35,7 @@ const CardPosts = ({ lastPost, posts }) => {
         ))}
       </Grid>
       <Grid item md={6} xs={12} height='33vh'>
-        {posts.slice(0, 3).map((postItem) => ( // Usar paréntesis para retornar elementos en el mapeo
+        {posts.slice(0, 3).map((postItem) => ( 
           <CardActionArea component="a" href="#" key={postItem.id}>
             <Card sx={{ display: 'flex', height: 200, border: '1px solid black', }}>
               <CardMedia
@@ -63,6 +63,7 @@ const CardPosts = ({ lastPost, posts }) => {
           </CardActionArea>
         ))}
       </Grid>
+      <hr/>
       {posts.length > 3 && (
         <Grid item xs={12}>
           <Button fullWidth variant="outlined" color="primary" sx={{

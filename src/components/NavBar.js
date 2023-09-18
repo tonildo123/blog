@@ -31,8 +31,8 @@ function NavBar() {
 
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#FDFEFE', width: '100%', marginLeft: 0, marginRight: 0, }}>
-      <Container maxWidth="xl">
+    <AppBar position="static" sx={{ backgroundColor: '#FDFEFE', marginLeft: 0, marginRight: 0, }}>
+      <Container>
         <Toolbar disableGutters sx={{ justifyContent: 'center' }}>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -79,7 +79,7 @@ function NavBar() {
             }} />
 
 
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, pr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -88,7 +88,7 @@ function NavBar() {
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
+              // flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
@@ -110,7 +110,7 @@ function NavBar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box>
             <Box
               display="flex"
               alignItems="center"

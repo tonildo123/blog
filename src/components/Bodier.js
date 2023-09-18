@@ -5,33 +5,32 @@ import SearchIcon from '@mui/icons-material/Search';
 const Bodier = () => {
   return (
     <Box
-      component="span"
       sx={{
         border: '1px dashed grey',
-        width: '100%',
-        minHeight: '100vh',
+        width: '100%', // Ancho al 100% en pantallas móviles
+        maxWidth: { xs: '100%', md: '100%' }, // Establece un ancho máximo
+        height: { xs: '450px', md: '600px' },
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center', 
+        justifyContent: 'center',
         backgroundImage:
           'url("https://firebasestorage.googleapis.com/v0/b/mi-mascota-a3b05.appspot.com/o/AssetsFolder%2FFOTO%20GUIA%20MIPYME%20SIN%20NADA.png?alt=media&token=2f60b4c2-76d9-45f6-9f9c-376ce230cc9c")',
-        backgroundSize: 'cover',
+        backgroundSize: 'fill',
         backgroundPosition: 'center',
       }}
     >
-      <Typography variant="h3" sx={{color:'white' }}>
-       Financiamiento, programas y servicios para
+      <Typography variant="h3" sx={{ color: 'white', fontSize: { xs: '24px', md: '48px' }}}>
+        Financiamiento, programas y servicios para
       </Typography>
-      <Typography variant="h3" sx={{ marginBottom: '18px', color:'white' }}>
+      <Typography variant="h3" sx={{ color: 'white', fontSize: { xs: '24px', md: '48px' }}}>
         empresas
       </Typography>
-      
+
       <FormControl
         sx={{
-          width: '100%', // Hacer el formulario ancho al 100%
-          maxWidth: '65ch', // Establecer un ancho máximo
-          backgroundColor:'white',
+          width: { xs: '300px', md: '65ch' },
+          backgroundColor: 'white',
         }}
         variant="outlined"
       >
