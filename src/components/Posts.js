@@ -44,17 +44,15 @@ const Posts = () => {
         getLastPost();
     }, [])
 
-        
+
 
 
     return (
-        <Box sx={{ margin: '1%' }}>
-            <Box sx={{ textAlign: 'center', marginBottom: '1rem', backgroundColor: 'white' }}>
-                <Typography variant="h4" gutterBottom color="grey">
-                    Novedades
-                </Typography>
-            </Box>
-            {posts.length === 0 ? <LoadingComponent /> : <CardPosts lastPost={lastPost} posts={posts}/>}
+        <Box mt={4} textAlign="center">
+            <Typography variant="h4" color="grey" gutterBottom>
+                Novedades
+            </Typography>
+            {posts.length === 0 ? <LoadingComponent /> : <CardPosts lastPost={lastPost} posts={posts} />}
         </Box >
 
     )

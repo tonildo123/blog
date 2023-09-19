@@ -1,81 +1,65 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Card, CardActionArea, CardContent, CardMedia, Grid, Button } from '@mui/material';
+import { Typography, Card, CardContent, Grid, Button, Box } from '@mui/material';
 
 const CardPosts = ({ lastPost, posts }) => {
   return (
-    <Grid container spacing={2}>
-      <Grid item md={6} xs={12}>
-        {lastPost.map((lastPostItem) => ( 
-          <CardActionArea component="a" href="#" key={lastPostItem.id}>
-            <Card sx={{ height: '100%' }}>
-              <CardMedia
-                component="img"
-                sx={{
-                  width: '100%',
-                  display: { xs: 'block', sm: 'block' },
-                  objectFit: 'fill',
-                }}
-                image={lastPostItem.Photo}
-                alt={lastPostItem.Photo}
+    <Box mt={4}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          {lastPost.map((lastPostItem) => (
+            <Card sx={{height:{xs : 250 , sm: 600}}}>
+              <img
+                src={lastPostItem.Photo}
+                alt="Imagen 1"
+                style={{ width: '100%', objectFit:'fill' }}
+                
               />
-              <CardContent sx={{ flex: 1 }}>
-                <Typography component="h2" variant="h5">
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
                   {lastPostItem.Titulo}
                 </Typography>
-                <Typography variant="subtitle1" paragraph>
+                <Typography variant="body2" color="textSecondary">
                   {lastPostItem.Detail}
                 </Typography>
-                <Typography variant="subtitle1" color="primary">
-                  Continue reading...
-                </Typography>
               </CardContent>
             </Card>
-          </CardActionArea>
-        ))}
-      </Grid>
-      <Grid item md={6} xs={12} height='33vh'>
-        {posts.slice(0, 3).map((postItem) => ( 
-          <CardActionArea component="a" href="#" key={postItem.id}>
-            <Card sx={{ display: 'flex', height: 200, border: '1px solid #EBF5FB', }}>
-              <CardMedia
-                component="img"
-                sx={{
-                  width: 200,
-                  display: { xs: 'block', sm: 'block' },
-                  objectFit: 'fill',
-                }}
-                image={postItem.Photo}
-                alt={postItem.Photo}
-              />
-              <CardContent sx={{ flex: 1 }}>
-                <Typography component="h2" variant="h5">
-                  {postItem.Titulo}
-                </Typography>
-                <Typography variant="subtitle1" paragraph>
-                  {postItem.Description}
-                </Typography>
-                <Typography variant="subtitle1" color="primary">
-                  Continue reading...
-                </Typography>
-              </CardContent>
-            </Card>
-          </CardActionArea>
-        ))}
-      </Grid>
-      <hr/>
-      {posts.length > 3 && (
-        <Grid item xs={12}>
-          <Button fullWidth variant="outlined" color="primary" sx={{
-              backgroundColor: '#2980B9',  
-              color: 'white',  
-              fontWeight: 'bold',  
-            }}>
-            Ver más
-          </Button>
+          ))}
         </Grid>
-      )}
-    </Grid>
+        <Grid item xs={12} sm={6}>
+          {posts.slice(0, 3).map((postItem) => (
+              <Card sx={{ display: 'flex', height: 200, border: '1px solid #EBF5FB', }}>
+                <img
+                src={postItem.Photo}
+                alt="Imagen 1"
+                style={{ width: '30%',objectFit:'fill' }}
+              />
+                <CardContent sx={{ flex: 1 }}>
+                  <Typography component="h2" variant="h5">
+                    {postItem.Titulo}
+                  </Typography>
+                  <Typography variant="subtitle1" paragraph>
+                    {postItem.Description}
+                  </Typography>
+                  <Typography variant="subtitle1" color="primary">
+                    Continue reading...
+                  </Typography>
+                </CardContent>
+              </Card>
+          ))}
+        </Grid>
+        {posts.length > 3 && (
+          <Grid item xs={12}>
+            <Button fullWidth variant="outlined" color="primary" sx={{
+              backgroundColor: '#2980B9',
+              color: 'white',
+              fontWeight: 'bold',
+            }}>
+              Ver más
+            </Button>
+          </Grid>
+        )}
+      </Grid>
+    </Box>
   );
 };
 
