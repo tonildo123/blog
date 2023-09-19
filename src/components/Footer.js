@@ -18,7 +18,7 @@ const Footer = () => {
   const textColor = '#EBF5FB'; // Color de texto deseado
 
   return (
-    <AppBar position="static" >
+    <AppBar position="static" sx={{pt:2, pb:8}}> 
       <Container maxWidth="lg">
         <Toolbar>
           <Grid container spacing={2}>
@@ -39,6 +39,8 @@ const Footer = () => {
               <Divider sx={{ my: 1 }} />
               <Typography variant="body2" sx={{ color: textColor }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod urna eget eros vehicula.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod urna eget eros vehicula.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod urna eget eros vehicula.
               </Typography>
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -47,13 +49,13 @@ const Footer = () => {
               </Typography>
               <Divider sx={{ my: 1 }} />
               <Box display="flex" alignItems="center">
-                <IconButton color="primary" aria-label="Facebook">
+                <IconButton color="white" aria-label="Facebook">
                   <FacebookIcon />
                 </IconButton>
-                <IconButton color="primary" aria-label="Twitter">
+                <IconButton color="white" aria-label="Twitter">
                   <TwitterIcon />
                 </IconButton>
-                <IconButton color="primary" aria-label="LinkedIn">
+                <IconButton color="white" aria-label="LinkedIn">
                   <LinkedInIcon />
                 </IconButton>
               </Box>
