@@ -37,7 +37,7 @@ const CardPosts = ({ lastPost, posts }) => {
       <Grid item md={6} xs={12} height='33vh'>
         {posts.slice(0, 3).map((postItem) => ( 
           <CardActionArea component="a" href="#" key={postItem.id}>
-            <Card sx={{ display: 'flex', height: 200, border: '1px solid black', }}>
+            <Card sx={{ display: 'flex', height: 200, border: '1px solid #EBF5FB', }}>
               <CardMedia
                 component="img"
                 sx={{

@@ -1,11 +1,8 @@
-import React from 'react'
+
 import { Box } from '@mui/material'
-import NavBar from '../../components/NavBar'
 import Bodier from '../../components/Bodier'
-import Footer from '../../components/Footer'
 import Posts from '../../components/Posts'
 import News from '../../components/News'
-import BlogFile from '../../components/BlogFile'
 
 
 const Blog = () => {

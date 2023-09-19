@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const CardNews = (card, index) => {
   return (
-    <Card sx={{ display: 'flex',border: '1px solid black', }}>
+    <Card sx={{ display: 'flex',border: '1px solid #2980B9', }}>
       <CardMedia
         component="img"
         sx={{ width: 151, borderRadius: '50%', }}
