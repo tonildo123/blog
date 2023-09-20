@@ -16,7 +16,7 @@ const Bodier = () => {
         justifyContent: 'center',
         flexDirection: 'column',
         textAlign: 'center',
-        height: { sm: '550px', md: '85vh' }
+        height: { sm: '550px', md: '65vh' }
       }}
     >
       <Typography variant="h4" color="white" gutterBottom>
@@ -25,13 +25,11 @@ const Bodier = () => {
       <Typography variant="h4" color="white" gutterBottom>
         empresas
       </Typography>
-      <Box sx={{ backgroundColor: 'white', padding: '2px' }}>
+      <Box sx={{display: 'inline-block', minWidth: '100px', backgroundColor: 'white' }}>
         <TextField
-          variant="outlined"
-          placeholder="Buscar publicación"
+          placeholder="Buscar linea de financiamiento"
           sx={{
             width: '100%',
-            maxWidth: '400px',
             backgroundColor: 'white',
           }}
           InputProps={{

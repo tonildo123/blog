@@ -1,19 +1,18 @@
+import React from 'react';
 import { Typography, Card, CardContent, Grid, Box } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
 const AllPosts = () => {
-
-    let { state } = useLocation();
-    console.log('all post', state)
-
+  let { state } = useLocation();
+  console.log('all post', state)
 
   return (    
-    <Box mt={4} >
-      <Grid container spacing={3} >        
-        <Grid item xs={12} sm={4}>
-          {state.card.map((postItem) => (
-            <Link to={`/cards/detail`} state={{ card: postItem}} key={postItem.id}>
-              <Card sx={{ display: 'flex', height: 200, border: '1px solid #EBF5FB', }}>
+    <Box mt={4} mb={4}>
+      <Grid container spacing={3}>
+        {state.card.map((postItem) => (
+          <Grid item xs={12} sm={4} key={postItem.id}>
+            <Link to={`/cards/detail`} state={{ card: postItem }}>
+              <Card sx={{ display: 'flex', height: 200, border: '1px solid #EBF5FB' }}>
                 <img
                   src={postItem.Photo}
                   alt="Imagen 1"
@@ -32,11 +31,11 @@ const AllPosts = () => {
                 </CardContent>
               </Card>
             </Link>
-          ))}
-        </Grid>
+          </Grid>
+        ))}
       </Grid>
     </Box>
   )
 }
 
-export default AllPosts
+export default AllPosts;

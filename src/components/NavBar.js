@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Hidden, Button, Tooltip, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-// import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import { useTheme } from '@mui/material/styles';
-const pages = ['Inicio', 'Quienes somos', 'Terminos y condiciones', 'Preguntas frecuentes'];
+import { NavLink } from 'react-router-dom';
+const pages = ['Inicio', 'Quienes somos', 'Preguntas frecuentes'];
 
 function NavBar() {
   const theme = useTheme();
@@ -33,8 +33,9 @@ function NavBar() {
   return (
     <AppBar position="static" sx={{ backgroundColor: '#FDFEFE', marginLeft: 0, marginRight: 0, }}>
       <Container>
-        <Toolbar disableGutters sx={{ justifyContent: 'center' }}>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+        <Toolbar disableGutters sx={{ justifyContent: { xs: 'space-between' } }}>
+          <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
+            {/**para el menu en mobile */}
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -45,7 +46,6 @@ function NavBar() {
             >
               <MenuIcon />
             </IconButton>
-            {/**para el menu en mobile */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -66,61 +66,43 @@ function NavBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" style={{ color: 'black' }}>{page}</Typography> {/**para telefono */}
+                  <Typography component={NavLink}
+                    to={`${page == 'Inicio' ? "/" : "/"}`} textAlign="center" style={{ color: 'black' }}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
+            {/**para el menu en mobile */}
           </Box>
 
           <img src="https://firebasestorage.googleapis.com/v0/b/mi-mascota-a3b05.appspot.com/o/AssetsFolder%2Fguia%20mipyme%20LOGOP%20TRANSPARENTE.png?alt=media&token=cae5b6b7-ec10-43af-bbc7-f5ac87501336"
             alt="Logo" style={{
               width: '100px', height: '40px', marginRight: '8px',
-              display: theme.breakpoints.up('md') ? 'flex' : 'none',
+              display: theme.breakpoints.up('md') ? 'flex' : 'flex',
             }} />
 
-
-          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, pr: 1 }} /> */}
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              // flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                component={NavLink}
+                to={`${page == 'Inicio' ? "/" : "/"}`}
                 sx={{ my: 2, color: 'black', display: 'block' }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-
           <Box>
             <Box
               display="flex"
               alignItems="center"
             > <Tooltip title="Buscar aqui">
-              <IconButton onClick={handleOpenSearchMenu} sx={{ p: 2 }}>
-                <SearchIcon />
-              </IconButton>
+                <IconButton onClick={handleOpenSearchMenu} sx={{ px: 3 }}>
+                  <SearchIcon />
+                </IconButton>
               </Tooltip>
               <Hidden mdDown>
-                <Typography variant="body1" sx={{ color: 'black', mr: 1 }}>
+                <Typography variant="body1" sx={{ color: 'black', px: 1, backgroundColor: '#D5DBDB' }}>
                   Suscribirse
                 </Typography>
               </Hidden>
@@ -142,7 +124,6 @@ function NavBar() {
               onClose={handleCloseSearchMenu}
             >
               <MenuItem>
-                {/* Aquí puedes colocar tu campo de búsqueda o el componente que desees */}
                 <input type="text" placeholder="Buscar..." />
               </MenuItem>
             </Menu>

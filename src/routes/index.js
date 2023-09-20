@@ -10,9 +10,9 @@ const RouterApp = () => {
     const { logged } = useSelector(state => state.logger.user);
 
     return (
-        <>  
-            <NavBar/>
+        <>
             <BrowserRouter>
+                <NavBar />
                 <Routes>
                     {
                         logged
@@ -23,7 +23,7 @@ const RouterApp = () => {
                     <Route path='*' element={<Navigate to='/' replace />} />
                 </Routes>
             </BrowserRouter>
-            <Footer/>
+            <Footer />
         </>
     )
 };

@@ -4,16 +4,16 @@ import { Link, NavLink } from 'react-router-dom'; // Importa Link
 
 const CardPosts = ({ lastPost, posts }) => {
   return (
-    <Box mt={4}>
+    <Box mt={2}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           {lastPost.map((lastPostItem) => (
             <Link to={`/cards/detail`} state={{ card: lastPostItem}} key={lastPostItem.id}>
-              <Card sx={{ height: { xs: 250, sm: 600 } }}>
+              <Card sx={{ height: { xs: 250, sm: 450 } }}>
                 <img
                   src={lastPostItem.Photo}
                   alt="Imagen 1"
-                  style={{ width: '100%', objectFit: 'fill' }}
+                  style={{ width: '100%',maxHeight: '70%', objectFit: 'fill' }}
 
                 />
                 <CardContent>
@@ -31,7 +31,7 @@ const CardPosts = ({ lastPost, posts }) => {
         <Grid item xs={12} sm={6}>
           {posts.slice(0, 3).map((postItem) => (
             <Link to={`/cards/detail`}state={{ card: postItem}} key={postItem.id}>
-              <Card sx={{ display: 'flex', height: 200, border: '1px solid #EBF5FB', }}>
+              <Card sx={{ display: 'flex', height:{xs : 150 , sm :150}, border: '1px solid #EBF5FB', }}>
                 <img
                   src={postItem.Photo}
                   alt="Imagen 1"
@@ -45,7 +45,7 @@ const CardPosts = ({ lastPost, posts }) => {
                     {postItem.Description}
                   </Typography>
                   <Typography variant="subtitle1" color="primary">
-                    Continue reading...
+                  {`>>`} ver mas
                   </Typography>
                 </CardContent>
               </Card>
@@ -57,11 +57,12 @@ const CardPosts = ({ lastPost, posts }) => {
             <Button fullWidth 
             component={NavLink} to="/cards/all" state={{ card: posts}}
             sx={{
-              backgroundColor: '#2980B9',
-              color: 'white',
+              backgroundColor: 'white',
+              color: '#2980B9',
               fontWeight: 'bold',
+              justifyContent:'flex-end'
             }}>
-              Ver más
+               {`>>`} Ver más {`>>`}
             </Button>
           </Grid>
         )}

@@ -48,7 +48,7 @@ const Posts = () => {
 
 
     return (
-        <Box mt={4} textAlign="center">
+        <Box mt={1} textAlign="center">
             <Typography variant="h4" color="grey" gutterBottom>
                 Novedades
             </Typography>
