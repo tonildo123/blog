@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Card, CardContent, Grid, Box } from '@mui/material';
+import { Typography, Card, CardContent, Grid } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
 const AllPosts = () => {
@@ -7,8 +7,7 @@ const AllPosts = () => {
   console.log('all post', state)
 
   return (    
-    <Box mt={4} mb={4}>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{my:'2%', px:'5%'}}>
         {state.card.map((postItem) => (
           <Grid item xs={12} sm={4} key={postItem.id}>
             <Link to={`/cards/detail`} state={{ card: postItem }}>
@@ -16,7 +15,7 @@ const AllPosts = () => {
                 <img
                   src={postItem.Photo}
                   alt="Imagen 1"
-                  style={{ width: '30%', objectFit: 'fill' }}
+                  style={{ width: '30%', objectFit: 'contain' }}
                 />
                 <CardContent sx={{ flex: 1 }}>
                   <Typography component="h2" variant="h5">
@@ -34,7 +33,6 @@ const AllPosts = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
   )
 }
 

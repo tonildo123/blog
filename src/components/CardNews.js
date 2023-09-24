@@ -4,10 +4,14 @@ import { NavLink } from 'react-router-dom';
 const CardNews = (card, index) => {
   return (
 
-    <Card sx={{ display: 'flex', border: '1px solid #EBF5FB', }} index={index}>
+    <Card 
+    // sx={{ display: 'flex', border: '1px solid #EBF5FB', }} 
+    index={index}>
       <CardMedia
         component="img"
-        sx={{ width: 200, borderRadius: '50%', }}
+        sx={{ width: 200,
+        // borderRadius: '50%',
+         height:200, }}
         image={card.Photo}
         alt="Live from space album cover"
       />
@@ -17,7 +21,7 @@ const CardNews = (card, index) => {
             {card.Description}
           </Typography>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 'auto' }}>           
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>              
+            <div style={{ display: 'flex', width:'100%', justifyContent: 'flex-end' }}>              
               <Typography component={NavLink} to="/cards/detail" state={{ card: card}} variant="h6" >
                 {`>>`} ver mas
               </Typography>

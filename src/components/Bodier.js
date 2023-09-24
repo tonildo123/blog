@@ -15,7 +15,7 @@ const Bodier = () => {
         justifyContent: 'center',
         flexDirection: 'column',
         textAlign: 'center',
-        height: { sm: '550px', md: '65vh' }
+        height: { sx :'400px', sm: '450px' }
       }}
     >
       <Typography variant="h4" color="white" gutterBottom>
