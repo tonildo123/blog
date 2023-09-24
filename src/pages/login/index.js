@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -10,6 +10,10 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase';
+import { loggearme } from '../../state/LoginSlice';
+import { useDispatch } from 'react-redux';
 
 function Copyright(props) {
   return (
@@ -27,14 +31,42 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
+
 export default function SignIn() {
-  const handleSubmit = (event) => {
+
+  const distpach = useDispatch()
+  
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    const email= data.get('email')
+    const password= data.get('password')
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password) 
+          .then(async (userCredential) => {
+              const user = {
+                  id: userCredential.user.uid,
+                  email: email,
+                  password: password
+              }
+              distpach(loggearme(user))
+          })
+          .catch((error) => {
+              setError(error.message);
+          })
+
+  } catch (error) {
+      setError(error.message);
+
+  }
   };
 
   return (
@@ -50,10 +82,10 @@ export default function SignIn() {
           }}
         >
           
-          <img src="https://firebasestorage.googleapis.com/v0/b/mi-mascota-a3b05.appspot.com/o/AssetsFolder%2Fguia%20mipyme%20LOGOP%20TRANSPARENTE.png?alt=media&token=cae5b6b7-ec10-43af-bbc7-f5ac87501336" 
+          {/* <img src="https://firebasestorage.googleapis.com/v0/b/mi-mascota-a3b05.appspot.com/o/AssetsFolder%2Fguia%20mipyme%20LOGOP%20TRANSPARENTE.png?alt=media&token=cae5b6b7-ec10-43af-bbc7-f5ac87501336" 
                alt="Logo" style={{ width: '100px', height: '40px', marginRight: '8px', 
              }}/>  
-          
+           */}
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, border:1, padding:2 }}>
             <TextField
               margin="normal"

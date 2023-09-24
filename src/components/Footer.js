@@ -15,10 +15,10 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Footer = () => {
-  const textColor = '#EBF5FB'; // Color de texto deseado #2980B9
+  const textColor = 'white'; // Color de texto deseado #2980B9
 
   return (
-    <AppBar position="static" sx={{pt:2, pb:8}}> 
+    <AppBar position="static" sx={{pt:2, pb:8, backgroundColor:'#5DADE2'}}> 
       <Container maxWidth="lg">
         <Toolbar>
           <Grid container spacing={2}>

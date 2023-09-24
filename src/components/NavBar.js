@@ -4,9 +4,22 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { useTheme } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
-const pages = ['Inicio', 'Quienes somos', 'Preguntas frecuentes'];
+import { useSelector, useDispatch } from 'react-redux';
+
+const menuDrawerUnlogged = [{ 'label': 'Inicio', 'ruta': '/nosotros' },
+                            { 'label': 'Quienes somos', 'ruta': '/nosotros' },
+                            { 'label': 'Preguntas frecuentes', 'ruta': '/nosotros' },
+                            { 'label': 'Suscribirse', 'ruta': '/nosotros' },
+                            { 'label': 'Login', 'ruta': '/login/admin' },];
+
+const menuDrawerLogged = [{ 'label': 'Cambiar foto de portada', 'ruta': '/home' },
+                         ]; 
+
 
 function NavBar() {
+
+  const dispatch = useDispatch()
+  const { logged } = useSelector(state => state.logger.user)
   const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElSearch, setAnchorElSearch] = React.useState(null);
@@ -64,12 +77,21 @@ function NavBar() {
                 display: { xs: 'block', md: 'none', color: 'black' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography component={NavLink}
-                    to={`${page == 'Inicio' ? "/" : "/"}`} textAlign="center" style={{ color: 'black' }}>{page}</Typography>
-                </MenuItem>
-              ))}
+               {!logged && menuDrawerUnlogged.map((page) => (
+                                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                                    <Typography component={NavLink}
+                                        to={`${page.ruta}`} textAlign="center" style={{ color: 'black' }}>{page.label}</Typography>
+                                </MenuItem>
+                            ))}
+                            {logged && menuDrawerLogged.map((page) => (
+                                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                                    <Typography 
+                                    component={NavLink}
+                                    to={`${page.ruta}`} 
+                                    textAlign="center" 
+                                    style={{ color: 'black' }}>{page.label}</Typography>
+                                </MenuItem>
+                            ))}
             </Menu>
             {/**para el menu en mobile */}
           </Box>
@@ -81,14 +103,16 @@ function NavBar() {
             }} />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-            {pages.map((page) => (
+            {!logged && 
+            menuDrawerUnlogged.filter(page=> page.label !=  'Suscribirse')
+            .map((page) => (
               <Button
                 key={page}
                 component={NavLink}
-                to={`${page == 'Inicio' ? "/" : "/"}`}
+                to={`${page.ruta}`}
                 sx={{ my: 2, color: 'black', display: 'block' }}
               >
-                {page}
+                {page.label}
               </Button>
             ))}
           </Box>

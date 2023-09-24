@@ -46,21 +46,14 @@ const BlogFile = () => {
     };
 
     return (
-        <Container
-            maxWidth="sm"
-            sx={{
-                height: { xs: '450px', md: '80vh' },
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                marginTop: '20px',
-            }}>
+        
             <Box
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     marginTop: '20px',
+                    py:'3%'
                 }}
             >
                 <Typography variant="h5" gutterBottom>
@@ -131,7 +124,6 @@ const BlogFile = () => {
                     </Button>
                 </form>
             </Box>
-        </Container>
     );
 };
 
