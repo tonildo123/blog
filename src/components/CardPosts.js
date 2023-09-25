@@ -12,7 +12,7 @@ const CardPosts = ({ lastPost, posts }) => {
               <img
                 src={lastPostItem.Photo}
                 alt="Imagen 1"
-                style={{ width: '100%', maxHeight: '70%', objectFit: 'fill' }}
+                style={{ width: '100%', maxHeight: '70%', objectFit: 'contain' }}
               />
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -33,7 +33,7 @@ const CardPosts = ({ lastPost, posts }) => {
               <img
                 src={postItem.Photo}
                 alt="Imagen 1"
-                style={{ width: '30%', objectFit: 'fill' }}
+                style={{ width: '30%', objectFit: 'contain' }}
               />
               <CardContent sx={{ flex: 1 }}>
                 <Typography component="h2" variant="h5">
