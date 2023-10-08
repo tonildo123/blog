@@ -3,6 +3,14 @@ import { Typography, Card, CardContent, Grid, Button, Box } from '@mui/material'
 import { Link, NavLink } from 'react-router-dom'; // Importa Link
 
 const CardPosts = ({ lastPost, posts }) => {
+
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    }
+    return text;
+}
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} sm={6}>
@@ -18,10 +26,8 @@ const CardPosts = ({ lastPost, posts }) => {
                 <Typography variant="h6" gutterBottom sx={{width:'20%'}}>
                   {lastPostItem.Titulo}
                 </Typography>
-                <Typography variant="body2" color="textSecondary"sx={{width:'80%'}}>
-                  {lastPostItem.Detail}
-                  wdkjbfcjiweqbfcixnqifbjnbcjew
-                  wdkjbfcjiweqbfcixnqifbjnbcjew
+                <Typography variant="body2" color="textSecondary" sx={{width:'80%',px:2, textDecoration:'none'}}>
+                  {truncateText(lastPostItem.Detail, 20)}                  
                 </Typography>
               </CardContent>
             </Card>
@@ -30,7 +36,7 @@ const CardPosts = ({ lastPost, posts }) => {
       </Grid>
       <Grid item xs={12} sm={6}>
         {posts.slice(0, 3).map((postItem) => (
-          <Link to={`/cards/detail`} state={{ card: postItem }} key={postItem.id}>
+          <Link to={`/cards/detail`} state={{ card: postItem }} key={postItem.id} sx={{ textDecoration: 'none' }}>
             <Card sx={{ display: 'flex', height: { xs: 100, sm: 150 } }}>
               <img
                 src={postItem.Photo}
@@ -38,14 +44,14 @@ const CardPosts = ({ lastPost, posts }) => {
                 style={{ width: '30%', objectFit: 'contain' }}
               />
               <CardContent sx={{ flex: 1 }}>
-                <Typography component="h2" variant="h5">
+                <Typography component="h2" variant="h5" sx={{ textDecoration: 'none' }}>
                   {postItem.Titulo}
                 </Typography>
-                <Typography variant="subtitle1" paragraph>
-                  {postItem.Description}
+                <Typography variant="subtitle1" paragraph sx={{ textDecoration: 'none' }}>
+                  {truncateText(postItem.Description, 20)}
                 </Typography>
                 <Box sx={{ display: 'flex', width: '100%',justifyContent:'flex-end' }}>
-                  <Typography variant="subtitle1" color="primary">
+                  <Typography variant="subtitle1" color="primary" sx={{ textDecoration: 'none' }}>
                     {`>>`} ver mas
                   </Typography>
                 </Box>

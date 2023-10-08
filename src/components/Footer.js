@@ -39,8 +39,6 @@ const Footer = () => {
               <Divider sx={{ my: 1 }} />
               <Typography variant="body2" sx={{ color: textColor }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod urna eget eros vehicula.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod urna eget eros vehicula.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod urna eget eros vehicula.
               </Typography>
             </Grid>
             <Grid item xs={12} sm={4}>
