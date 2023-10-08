@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import { useEffect, useState } from "react";
-import { Box, Grid, Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import LoadingComponent from './LoadingComponent'
 import CardPosts from "./CardPosts"
 import { collection, getDocs } from 'firebase/firestore';

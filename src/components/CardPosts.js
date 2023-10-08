@@ -8,18 +8,20 @@ const CardPosts = ({ lastPost, posts }) => {
       <Grid item xs={12} sm={6}>
         {lastPost.map((lastPostItem) => (
           <Link to={`/cards/detail`} state={{ card: lastPostItem }} key={lastPostItem.id}>
-            <Card sx={{ height: { xs: 250, sm: 450 } }}>
+            <Card sx={{ height: { xs: 250, sm: 450 }}}>
               <img
                 src={lastPostItem.Photo}
                 alt="Imagen 1"
                 style={{ width: '100%', maxHeight: '70%', objectFit: 'contain' }}
               />
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
+              <CardContent sx={{display:'flex', justifyContent:'space-around', px:8}}>
+                <Typography variant="h6" gutterBottom sx={{width:'20%'}}>
                   {lastPostItem.Titulo}
                 </Typography>
-                <Typography variant="body2" color="textSecondary">
+                <Typography variant="body2" color="textSecondary"sx={{width:'80%'}}>
                   {lastPostItem.Detail}
+                  wdkjbfcjiweqbfcixnqifbjnbcjew
+                  wdkjbfcjiweqbfcixnqifbjnbcjew
                 </Typography>
               </CardContent>
             </Card>
