@@ -28,17 +28,13 @@ const Posts = () => {
     }
 
     const getPosts = async () => {
-
         const data = await getDocs(newCollection);
-        console.log('data');
-        console.log(data);
-
-        setPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-
-        console.log('Posts : ');
-        console.log(posts);
-
+        const postsData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        // Ordenar los posts de manera descendente por fecha (asumiendo que tienes una propiedad "fecha" en tus posts)
+        postsData.sort((a, b) => b.orden - a.orden);
+        setPosts(postsData);
     }
+
     useEffect(() => {
         getPosts();
         getLastPost();
@@ -52,7 +48,9 @@ const Posts = () => {
             <Typography variant="h4" color="grey" gutterBottom>
                 Novedades
             </Typography>
-            {posts.length === 0 ? <LoadingComponent /> : <CardPosts lastPost={lastPost} posts={posts} />}
+            {posts.length === 0
+                ? <LoadingComponent />
+                : <CardPosts lastPost={lastPost} posts={posts} />}
         </Box >
 
     )

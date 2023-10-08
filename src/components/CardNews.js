@@ -1,34 +1,22 @@
-import { Typography, Card, CardMedia, CardContent,  } from '@mui/material';
+import { Card, CardMedia } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 const CardNews = (card, index) => {
   return (
-
-    <Card 
-    // sx={{ display: 'flex', border: '1px solid #EBF5FB', }} 
-    index={index}>
-      <CardMedia
-        component="img"
-        sx={{ width: 200,
-        // borderRadius: '50%',
-         height:200, }}
-        image={card.Photo}
-        alt="Live from space album cover"
-      />
-      <CardContent sx={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
-          <Typography variant="h6" component="div">
-            {card.Description}
-          </Typography>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 'auto' }}>           
-            <div style={{ display: 'flex', width:'100%', justifyContent: 'flex-end' }}>              
-              <Typography component={NavLink} to="/cards/detail" state={{ card: card}} variant="h6" >
-                {`>>`} ver mas
-              </Typography>
-            </div>
-          </div>
-        </div>
-      </CardContent>
+    <Card index={index}>
+      <NavLink to="/cards/detail" state={{ card: card }}>
+        <CardMedia
+          component="img"
+          sx={{
+            width: '100%',
+            height: 200,
+            objectFit: 'contain',
+            my: 1
+          }}
+          image={card.Photo}
+          alt="Imagen de la noticia"
+        />
+      </NavLink>
     </Card>
   );
 };

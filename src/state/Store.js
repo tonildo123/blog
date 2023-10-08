@@ -2,7 +2,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import LoginSlice from './LoginSlice'
 import ProfileSlice from './Profileslice'
 import AddressSlice from './AddressSlice'
-import PetSlice from './PetSlice'
+import PostSlice from './PostSlice'
+import ArrayPostSlice from './ArrayPostSlice'
 
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     logger: LoginSlice, // login
     profileuser: ProfileSlice, // perfil
     addressuser: AddressSlice, // herramientas
-    petuser: PetSlice, // post 
+    postuser: PostSlice, // post 
+    userPostsArray: ArrayPostSlice, // posts 
   },
 })
