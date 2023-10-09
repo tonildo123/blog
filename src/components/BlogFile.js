@@ -22,7 +22,7 @@ const BlogFile = () => {
     const dispatch = useDispatch()
     const [categoria, setCategoria] = useState('');
     const [titulo, setTitulo] = useState('');
-    const [descripcion, setDescripcion] = useState('');
+    // const [descripcion, setDescripcion] = useState('');
     const [detalle, setDetalle] = useState('');
     const [imagen, setImagen] = useState(null);
     const [imagesName, setImagesName] = useState(null);
@@ -57,9 +57,9 @@ const BlogFile = () => {
         setTitulo(event.target.value);
     };
 
-    const handleDescripcionChange = (event) => {
-        setDescripcion(event.target.value);
-    };
+    // const handleDescripcionChange = (event) => {
+    //     setDescripcion(event.target.value);
+    // };
 
     const handleDetalleChange = (event) => {
         setDetalle(event.target.value);
@@ -78,7 +78,7 @@ const BlogFile = () => {
         // En este punto, puedes enviar la categoría, el título, la Descripcion, la imagen, etc., al servidor o realizar otras acciones
         console.log('Categoría:', categoria);
         console.log('Título:', titulo);
-        console.log('Descripcion:', descripcion);
+        // console.log('Descripcion:', descripcion);
         console.log('detalle:', detalle);
         console.log('Imagen:', imagen);
         const orden = parseInt(lastPost[0].orden) + 1;
@@ -95,7 +95,7 @@ const BlogFile = () => {
                 // Datos que deseas actualizar
                 const dataToUpdate = {
                     id: lastPost[0].id,
-                    Descripcion: descripcion,
+                    // Descripcion: descripcion,
                     Detail: detalle,
                     Photo: url,
                     Tag: 'Posts',
@@ -109,7 +109,7 @@ const BlogFile = () => {
 
                     const dataToCreate = {
 
-                        Descripcion: descripcion,
+                        // Descripcion: descripcion,
                         Detail: detalle,
                         Photo: url,
                         Tag: 'Posts',
@@ -198,16 +198,16 @@ const BlogFile = () => {
                     onChange={handleTituloChange}
                     margin="normal"
                 />
-                <TextField
+                {/* <TextField
                     label="Breve Descripcion"
                     variant="outlined"
                     fullWidth
                     value={descripcion}
                     onChange={handleDescripcionChange}
                     margin="normal"
-                />
+                /> */}
                 <TextField
-                    label="Descripcion detallada"
+                    label="Descripcion"
                     variant="outlined"
                     fullWidth
                     multiline

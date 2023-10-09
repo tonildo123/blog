@@ -23,7 +23,7 @@ const ResponsiveCard = (card) => {
                         {state.card.Titulo}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
-                        {state.card.Description}
+                        {state.card.Detail}
                     </Typography>
                 </CardContent>
             </Card>

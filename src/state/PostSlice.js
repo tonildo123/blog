@@ -6,7 +6,7 @@ export const PostSlice = createSlice({
         post:
         {
             id: null,
-            Descripcion: null,
+            // Descripcion: null,
             Detail: null,
             Photo: null,
             Tag: null,
@@ -20,7 +20,7 @@ export const PostSlice = createSlice({
         postSuccess: (state, action) => {
             let newPet = {
                 id: action.payload.id,
-                Descripcion: action.payload.Descripcion,
+                // Descripcion: action.payload.Descripcion,
                 Detail: action.payload.Detail,
                 Photo: action.payload.Photo,
                 Tag: action.payload.Tag,
@@ -36,7 +36,7 @@ export const PostSlice = createSlice({
 
             let newPet = {
                 id: null,
-                Descripcion: null,
+                // Descripcion: null,
                 Detail: null,
                 Photo: null,
                 Tag: null,
@@ -51,7 +51,7 @@ export const PostSlice = createSlice({
 
             let newPet = {
                 id: null,
-                Descripcion: null,
+                // Descripcion: null,
                 Detail: null,
                 Photo: null,
                 Tag: null,

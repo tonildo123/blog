@@ -22,10 +22,7 @@ const AllPosts = () => {
                     {postItem.Titulo}
                   </Typography>
                   <Typography variant="subtitle1" paragraph>
-                    {postItem.Description}
-                  </Typography>
-                  <Typography variant="subtitle1" color="primary">
-                    Continue reading...
+                    {postItem.Detail}
                   </Typography>
                 </CardContent>
               </Card>

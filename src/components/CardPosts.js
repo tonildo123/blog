@@ -6,28 +6,28 @@ const CardPosts = ({ lastPost, posts }) => {
 
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
-        return text.substring(0, maxLength) + '...';
+      return text.substring(0, maxLength) + '...';
     }
     return text;
-}
+  }
 
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} sm={6}>
         {lastPost.map((lastPostItem) => (
           <Link to={`/cards/detail`} state={{ card: lastPostItem }} key={lastPostItem.id}>
-            <Card sx={{ height: { xs: 250, sm: 450 }}}>
+            <Card sx={{ height: { xs: 250, sm: 450 } }}>
               <img
                 src={lastPostItem.Photo}
                 alt="Imagen 1"
                 style={{ width: '100%', maxHeight: '70%', objectFit: 'contain' }}
               />
-              <CardContent sx={{display:'flex', justifyContent:'space-around', px:8}}>
-                <Typography variant="h6" gutterBottom sx={{width:'20%'}}>
+              <CardContent sx={{ display: 'flex', justifyContent: 'space-around', px: 8 }}>
+                <Typography variant="h6" gutterBottom sx={{ width: '25%', height: '100%' }}>
                   {lastPostItem.Titulo}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" sx={{width:'80%',px:2, textDecoration:'none'}}>
-                  {truncateText(lastPostItem.Detail, 20)}                  
+                <Typography variant="body2" color="textSecondary" sx={{ width: '75%', height: '100%', px: 2 }}>
+                  {truncateText(lastPostItem.Detail, 20)}
                 </Typography>
               </CardContent>
             </Card>
@@ -36,22 +36,24 @@ const CardPosts = ({ lastPost, posts }) => {
       </Grid>
       <Grid item xs={12} sm={6}>
         {posts.slice(0, 3).map((postItem) => (
-          <Link to={`/cards/detail`} state={{ card: postItem }} key={postItem.id} sx={{ textDecoration: 'none' }}>
+          <Link to={`/cards/detail`} state={{ card: postItem }} key={postItem.id} >
             <Card sx={{ display: 'flex', height: { xs: 100, sm: 150 } }}>
               <img
                 src={postItem.Photo}
                 alt="Imagen 1"
                 style={{ width: '30%', objectFit: 'contain' }}
               />
-              <CardContent sx={{ flex: 1 }}>
-                <Typography component="h2" variant="h5" sx={{ textDecoration: 'none' }}>
-                  {postItem.Titulo}
-                </Typography>
-                <Typography variant="subtitle1" paragraph sx={{ textDecoration: 'none' }}>
-                  {truncateText(postItem.Description, 20)}
-                </Typography>
-                <Box sx={{ display: 'flex', width: '100%',justifyContent:'flex-end' }}>
-                  <Typography variant="subtitle1" color="primary" sx={{ textDecoration: 'none' }}>
+              <CardContent sx={{ flex: 'none' }}>
+                <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-around' }}>
+                  <Typography component="h2" variant="h5" sx={{ mx:1 }}>
+                    {postItem.Titulo}
+                  </Typography>
+                  <Typography variant="subtitle1" paragraph sx={{ mx:1 }}>
+                    {truncateText(postItem.Detail, 20)}
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>
+                  <Typography variant="subtitle1" color="primary" textDecoration="none">
                     {`>>`} ver mas
                   </Typography>
                 </Box>
