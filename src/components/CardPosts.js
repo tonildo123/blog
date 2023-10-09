@@ -15,7 +15,7 @@ const CardPosts = ({ lastPost, posts }) => {
     <Grid container spacing={3}>
       <Grid item xs={12} sm={6}>
         {lastPost.map((lastPostItem) => (
-          <Link to={`/cards/detail`} state={{ card: lastPostItem }} key={lastPostItem.id}>
+          <Link to={`/cards/detail`} state={{ card: lastPostItem }} key={lastPostItem.id} style={{ textDecoration: 'none' }}>
             <Card sx={{ height: { xs: 250, sm: 450 } }}>
               <img
                 src={lastPostItem.Photo}
@@ -36,7 +36,7 @@ const CardPosts = ({ lastPost, posts }) => {
       </Grid>
       <Grid item xs={12} sm={6}>
         {posts.slice(0, 3).map((postItem) => (
-          <Link to={`/cards/detail`} state={{ card: postItem }} key={postItem.id} >
+          <Link to={`/cards/detail`} state={{ card: postItem }} key={postItem.id} style={{ textDecoration: 'none' }}>
             <Card sx={{ display: 'flex', height: { xs: 100, sm: 150 } }}>
               <img
                 src={postItem.Photo}
@@ -52,8 +52,8 @@ const CardPosts = ({ lastPost, posts }) => {
                     {truncateText(postItem.Detail, 20)}
                   </Typography>
                 </Box>
-                <Box sx={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>
-                  <Typography variant="subtitle1" color="primary" textDecoration="none">
+                <Box sx={{ display: 'flex', width: '100%', justifyContent: 'flex-end', alignItems:'flex-end' }}>
+                  <Typography variant="subtitle1" color="primary">
                     {`>>`} ver mas
                   </Typography>
                 </Box>
