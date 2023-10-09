@@ -1,8 +1,15 @@
+/*eslint-disable*/
 import PropTypes from 'prop-types';
 import { Typography, Card, CardContent, Grid, Button, Box } from '@mui/material';
 import { Link, NavLink } from 'react-router-dom'; // Importa Link
+import { useEffect } from 'react';
 
 const CardPosts = ({ lastPost, posts }) => {
+
+  useEffect(() => {
+    console.log('lastpost', lastPost)
+  }, [])
+  
 
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
@@ -13,26 +20,24 @@ const CardPosts = ({ lastPost, posts }) => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} sm={6}>
-        {lastPost.map((lastPostItem) => (
-          <Link to={`/cards/detail`} state={{ card: lastPostItem }} key={lastPostItem.id} style={{ textDecoration: 'none' }}>
+      <Grid item xs={12} sm={6}>        
+          <Link to={`/cards/detail`} state={{ card: lastPost }}  style={{ textDecoration: 'none' }}>
             <Card sx={{ height: { xs: 250, sm: 450 } }}>
               <img
-                src={lastPostItem.Photo}
+                src={lastPost.Photo}
                 alt="Imagen 1"
                 style={{ width: '100%', maxHeight: '70%', objectFit: 'contain' }}
               />
               <CardContent sx={{ display: 'flex', justifyContent: 'space-around', px: 8 }}>
                 <Typography variant="h6" gutterBottom sx={{ width: '25%', height: '100%' }}>
-                  {lastPostItem.Titulo}
+                  {truncateText(lastPost.Titulo)}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" sx={{ width: '75%', height: '100%', px: 2 }}>
-                  {truncateText(lastPostItem.Detail, 20)}
+                  {truncateText(lastPost.Detail, 20)}
                 </Typography>
               </CardContent>
             </Card>
-          </Link>
-        ))}
+          </Link>        
       </Grid>
       <Grid item xs={12} sm={6}>
         {posts.slice(0, 3).map((postItem) => (
