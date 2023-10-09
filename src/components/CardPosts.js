@@ -46,7 +46,7 @@ const CardPosts = ({ lastPost, posts }) => {
               <CardContent sx={{ flex: 'none' }}>
                 <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-around' }}>
                   <Typography component="h2" variant="h5" sx={{ mx:1 }}>
-                    {postItem.Titulo}
+                    {truncateText(postItem.Titulo, 20)}
                   </Typography>
                   <Typography variant="subtitle1" paragraph sx={{ mx:1 }}>
                     {truncateText(postItem.Detail, 20)}
