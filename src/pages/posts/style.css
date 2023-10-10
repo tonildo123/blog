@@ -1,34 +1,45 @@
 /* Estilos para el componente ResponsiveCard */
 .responsive-card {
-    max-width: 100%; /* La tarjeta ocupará el 100% del ancho del contenedor */
-  
-    /* Estilos para centrar el Card en pantallas más grandes que xs */
-    margin: 0 auto; /* Margen automático a la izquierda y derecha para centrar horizontalmente */
+  max-width: 100%;
+  /* La tarjeta ocupará el 100% del ancho del contenedor */
+
+  /* Estilos para centrar el Card en pantallas más grandes que xs */
+  margin: 0 auto;
+  /* Margen automático a la izquierda y derecha para centrar horizontalmente */
+}
+
+/* Estilos para la imagen en la tarjeta */
+.card-image {
+  width: 100%;
+  /* La imagen ocupará todo el ancho de la tarjeta */
+  height: auto;
+  /* La altura se ajustará automáticamente para mantener la relación de aspecto */
+}
+
+/* Estilos para hacer la tipografía más grande en pantallas más grandes */
+@media (min-width: 768px) {
+
+  /* Centra el Card solo para pantallas más grandes que xs */
+  .centered-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
   }
-  
-  /* Estilos para la imagen en la tarjeta */
-  .card-image {
-    width: 100%; /* La imagen ocupará todo el ancho de la tarjeta */
-    height: auto; /* La altura se ajustará automáticamente para mantener la relación de aspecto */
+
+  .responsive-card {
+    max-width: 600px;
+    /* Limita el ancho máximo en pantallas más grandes */
   }
-  
-  /* Estilos para hacer la tipografía más grande en pantallas más grandes */
-  @media (min-width: 768px) {
-    /* Centra el Card solo para pantallas más grandes que xs */
-    .centered-card {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* height: 100vh; Ajusta la altura al 100% del viewport */
-    }
-  
-    .responsive-card {
-      max-width: 400px; /* Limita el ancho máximo en pantallas más grandes */
-    }
-  
-    /* Ajusta el tamaño del texto en pantallas más grandes si es necesario */
-    .responsive-card .MuiTypography-root {
-      font-size: 1.2rem; /* Cambia el tamaño del texto según tus preferencias */
-    }
+
+  /* Ajusta el tamaño del texto en pantallas más grandes si es necesario */
+  .responsive-card .MuiTypography-root {
+    font-size: 1.2rem;
+    /* Cambia el tamaño del texto según tus preferencias */
+    white-space: pre-line;
+    /*Forzar saltos de línea*/
   }
-  
+
+ 
+
+}
