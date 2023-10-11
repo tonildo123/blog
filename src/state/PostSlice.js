@@ -18,7 +18,7 @@ export const PostSlice = createSlice({
     },
     reducers: {
         postSuccess: (state, action) => {
-            let newPet = {
+            let newPost = {
                 id: action.payload.id,
                 // Descripcion: action.payload.Descripcion,
                 Detail: action.payload.Detail,
@@ -29,12 +29,12 @@ export const PostSlice = createSlice({
                 status: true
             };
 
-            state.pet = newPet
+            state.post = newPost
 
         },
         postFailure: (state, action) => {
 
-            let newPet = {
+            let newPost = {
                 id: null,
                 // Descripcion: null,
                 Detail: null,
@@ -45,11 +45,11 @@ export const PostSlice = createSlice({
                 status: false
             };
 
-            state.pet = newPet
+            state.post = newPost
         },
         petClean: (state, action) => {
 
-            let newPet = {
+            let newPost = {
                 id: null,
                 // Descripcion: null,
                 Detail: null,
@@ -60,7 +60,7 @@ export const PostSlice = createSlice({
                 status: null
             };
 
-            state.pet = newPet
+            state.post = newPost
         }
     },
 })

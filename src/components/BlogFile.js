@@ -11,9 +11,10 @@ import {
     MenuItem
 } from '@mui/material';
 import Swal from 'sweetalert2'
+import CircularProgress from '@mui/material/CircularProgress';
 import { db, uploadFile } from '../firebase';
 import { collection, addDoc, getDocs, where } from 'firebase/firestore';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postSuccess } from '../state/PostSlice';
 import { postArraySuccess } from '../state/ArrayPostSlice';
 
@@ -25,27 +26,15 @@ const BlogFile = () => {
     const [detalle, setDetalle] = useState('');
     const [imagen, setImagen] = useState(null);
     const [imagesName, setImagesName] = useState(null);
-    const [lastPost, setLastPost] = useState([]);
+    const [loading, setLoading] = useState(false);
 
+    const state =  useSelector(state => state)
 
     useEffect(() => {
-
-        ObtenerUltimoOrden();
-
+      console.log('state : ', JSON.stringify(state.postuser.post.orden, null, 5))
     }, [])
-
-    const ObtenerUltimoOrden = async () => {
-        const newLastCollection = collection(db, "LastPost");
-        const data = await getDocs(newLastCollection);
-        console.log('data');
-        console.log(data);
-
-        setLastPost(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-
-        console.log('LastPost carga: ');
-        console.log(lastPost);
-
-    }
+    
+  
 
     const handleCategoriaChange = (event) => {
         setCategoria(event.target.value);
@@ -67,12 +56,13 @@ const BlogFile = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true)
 
         console.log('Categoría:', categoria);
         console.log('Título:', titulo);
         console.log('detalle:', detalle);
         console.log('Imagen:', imagen);
-        const orden = parseInt(lastPost[0].orden) + 1;
+        const orden = parseInt(state.postuser.post.orden) + 1;
         console.log('orden ', orden)
 
         if (categoria == 'Novedades') {
@@ -98,6 +88,7 @@ const BlogFile = () => {
                 await addDoc(onlyPost, dataToCreate);
                 dispatch(postSuccess(dataToCreate))
                 dispatch(postArraySuccess(dataToCreate))
+                setLoading(false)
                 Swal.fire({
                     title: 'Guadado exitosamente!',
                     icon: 'success',
@@ -109,6 +100,7 @@ const BlogFile = () => {
             catch (error) {
 
                 console.log(error)
+                setLoading(false)
 
                 Swal.fire({
                     title: 'Ocurrio un error!',
@@ -122,7 +114,7 @@ const BlogFile = () => {
 
         } else {
             console.log('logica herramientas')
-
+            setLoading(false)
             // falta realizar la logica para herramientas 
 
         }
@@ -142,6 +134,7 @@ const BlogFile = () => {
             <Typography variant="h5" gutterBottom>
                 Formulario de Carga
             </Typography>
+            {loading && <CircularProgress />}
             <form onSubmit={handleSubmit}>
                 <FormControl fullWidth variant="outlined" margin="normal">
                     <InputLabel id="categoria-label">Categoría</InputLabel>
@@ -164,14 +157,7 @@ const BlogFile = () => {
                     onChange={handleTituloChange}
                     margin="normal"
                 />
-                {/* <TextField
-                    label="Breve Descripcion"
-                    variant="outlined"
-                    fullWidth
-                    value={descripcion}
-                    onChange={handleDescripcionChange}
-                    margin="normal"
-                /> */}
+               
                 <TextField
                     label="Descripcion"
                     variant="outlined"
