@@ -9,7 +9,7 @@ const CardPosts = ({ lastPost, posts }) => {
   useEffect(() => {
     console.log('lastpost', lastPost)
   }, [])
-  
+
 
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
@@ -25,7 +25,7 @@ const CardPosts = ({ lastPost, posts }) => {
 
   const truncateTextTitle = (text, maxLength) => {
     if (text.length > maxLength) {
-      return ( text.substring(0, maxLength) + '...');
+      return (text.substring(0, maxLength) + '...');
     }
     return text;
   }
@@ -33,24 +33,24 @@ const CardPosts = ({ lastPost, posts }) => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} sm={6}>        
-          <Link to={`/cards/detail`} state={{ card: lastPost }}  style={{ textDecoration: 'none' }}>
-            <Card sx={{ height: { xs: 250, sm: 450 } }}>
-              <img
-                src={lastPost.Photo}
-                alt="Imagen 1"
-                style={{ width: '100%', maxHeight: '70%', objectFit: 'contain' }}
-              />
-              <CardContent sx={{ display: 'flex', justifyContent: 'space-around', px: 1 }}>
-                <Typography  sx={{ width: '25%', height: '100%', fontWeight:'bold',textAlign: 'left' }}>
-                  {truncateTextTitle(lastPost.Titulo, 40)}
-                </Typography>
-                <Typography  sx={{ width: '75%', height: '100%', px: 2,textAlign: 'left' }}>
-                  {truncateText(lastPost.Detail, 180)}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Link>        
+      <Grid item xs={12} sm={6}>
+        <Link to={`/cards/detail`} state={{ card: lastPost }} style={{ textDecoration: 'none' }}>
+          <Card sx={{ height: { xs: 250, sm: 450 } }}>
+            <img
+              src={lastPost.Photo}
+              alt="Imagen 1"
+              style={{ width: '100%', maxHeight: '70%', objectFit: 'contain' }}
+            />
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', py: 1}}>
+              <Typography sx={{ width: '100%', height: '20%', fontWeight: 'bold', textAlign: 'left' }}>
+                {truncateTextTitle(lastPost.Titulo, 80)}
+              </Typography>
+              <Typography sx={{ width: '100%', height: '80%', mb:1, textAlign: 'left' }}>
+                {truncateText(lastPost.Detail, 180)}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Link>
       </Grid>
       <Grid item xs={12} sm={6}>
         {posts.slice(1, 4).map((postItem) => (
@@ -61,13 +61,13 @@ const CardPosts = ({ lastPost, posts }) => {
                 alt="Imagen 1"
                 style={{ width: '30%', objectFit: 'contain' }}
               />
-              <CardContent sx={{ display: 'flex', justifyContent: 'space-around', px: 1 }}>                
-                  <Typography sx={{ width: '25%', height: '100%', fontWeight:'bold', textAlign: 'left' }}>
-                    {truncateTextTitle(postItem.Titulo, 40)}
-                  </Typography>
-                  <Typography  sx={{ width: '75%', height: '100%', px: 2, textAlign: 'left' }}>
-                    {truncateText(postItem.Detail, 100)}
-                  </Typography>              
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', py: 1}}>
+                <Typography sx={{width: '100%', height: '20%', fontWeight: 'bold', textAlign: 'left' }}>
+                  {truncateTextTitle(postItem.Titulo, 40)}
+                </Typography>
+                <Typography sx={{  width: '100%', height: '80%', mb:1, textAlign: 'left' }}>
+                  {truncateText(postItem.Detail, 100)}
+                </Typography>
               </CardContent>
             </Card>
           </Link>
