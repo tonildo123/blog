@@ -1,5 +1,7 @@
-import { Card, CardContent, Typography, Box, Button } from '@mui/material';
+import React from 'react';
+import { Card, CardContent, Typography, Box } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+
 
 import './style.css'
 
@@ -42,6 +44,7 @@ const ResponsiveCard = (card) => {
                         {state.card.Titulo}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
+                        {renderLinksInText(state.card.Detail)}
                         {renderLinksInText(state.card.Detail)}
                     </Typography>
                 </CardContent>
