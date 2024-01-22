@@ -2,7 +2,6 @@
 import { Container } from '@mui/material'
 import Bodier from '../../components/Bodier'
 import Posts from '../../components/Posts'
-import News from '../../components/News'
 
 const Blog = () => {
   
@@ -10,7 +9,6 @@ const Blog = () => {
     <Container>
       <Bodier />
       <Posts />
-      <News />
     </Container>
   )
 }

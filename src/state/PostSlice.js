@@ -6,11 +6,11 @@ export const PostSlice = createSlice({
         post:
         {
             id: null,
-            // Descripcion: null,
-            Detail: null,
+            Articulo: null,
+            Detalle:null,
             Photo: null,
             Tag: null,
-            Titulo: null,
+            precio: null,
             orden: null,
             status: null
         },
@@ -20,11 +20,11 @@ export const PostSlice = createSlice({
         postSuccess: (state, action) => {
             let newPost = {
                 id: action.payload.id,
-                // Descripcion: action.payload.Descripcion,
-                Detail: action.payload.Detail,
+                Articulo: action.payload.Articulo,
+                Detalle:action.payload.Detalle,
                 Photo: action.payload.Photo,
                 Tag: action.payload.Tag,
-                Titulo: action.payload.Titulo,
+                precio: action.payload.precio,
                 orden: action.payload.orden,
                 status: true
             };
@@ -36,34 +36,18 @@ export const PostSlice = createSlice({
 
             let newPost = {
                 id: null,
-                // Descripcion: null,
-                Detail: null,
+                Articulo: null,
+                Detalle:null,
                 Photo: null,
                 Tag: null,
-                Titulo: null,
+                precio: null,
                 orden: null,
                 status: false
-            };
-
-            state.post = newPost
-        },
-        petClean: (state, action) => {
-
-            let newPost = {
-                id: null,
-                // Descripcion: null,
-                Detail: null,
-                Photo: null,
-                Tag: null,
-                Titulo: null,
-                orden: null,
-                status: null
             };
 
             state.post = newPost
         }
     },
 })
-// Action creators are generated for each case reducer function
-export const { postSuccess, postFailure, postClean } = PostSlice.actions
+export const { postSuccess, postFailure } = PostSlice.actions
 export default PostSlice.reducer;

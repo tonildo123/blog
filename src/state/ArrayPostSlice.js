@@ -10,11 +10,11 @@ export const ArrayPostSlice = createSlice({
       // Agrega la nueva mascota al array de mascotas del usuario
       state.posts.push({
         id: action.payload.id,
-        // Descripcion: action.payload.Descripcion,
         Detail: action.payload.Detail,
         Photo: action.payload.Photo,
         Tag: action.payload.Tag,
-        Titulo: action.payload.Titulo,
+        Articulo: action.payload.Articulo,
+        Precio: action.payload.Precio,
         orden: action.payload.orden,
         status: true,
       });

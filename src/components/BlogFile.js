@@ -5,42 +5,37 @@ import {
     Button,
     TextField,
     Typography,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem
 } from '@mui/material';
 import Swal from 'sweetalert2'
 import CircularProgress from '@mui/material/CircularProgress';
 import { db, uploadFile } from '../firebase';
-import { collection, addDoc, getDocs, where } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
-import { postSuccess } from '../state/PostSlice';
 import { postArraySuccess } from '../state/ArrayPostSlice';
 
 const BlogFile = () => {
 
     const dispatch = useDispatch()
-    const [categoria, setCategoria] = useState('');
-    const [titulo, setTitulo] = useState('');
+    const [precio, setPrecio] = useState('');
+    const [articulo, setArticulo] = useState('');
     const [detalle, setDetalle] = useState('');
     const [imagen, setImagen] = useState(null);
     const [imagesName, setImagesName] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    const state =  useSelector(state => state)
+    const state = useSelector(state => state)
 
     useEffect(() => {
-      console.log('state : ', JSON.stringify(state.postuser.post.orden, null, 5))
+        console.log('state : ', JSON.stringify(state.postuser.post.orden, null, 5))
     }, [])
-    
-  
 
-    const handleCategoriaChange = (event) => {
-        setCategoria(event.target.value);
+
+
+    const handlePrecioChange = (event) => {
+        setPrecio(event.target.value);
     };
-    const handleTituloChange = (event) => {
-        setTitulo(event.target.value);
+    const handlearticuloChange = (event) => {
+        setArticulo(event.target.value);
     };
 
     const handleDetalleChange = (event) => {
@@ -58,18 +53,13 @@ const BlogFile = () => {
         event.preventDefault();
         setLoading(true)
 
-        console.log('Categoría:', categoria);
-        console.log('Título:', titulo);
+        console.log('precio:', precio);
+        console.log('Título:', articulo);
         console.log('detalle:', detalle);
         console.log('Imagen:', imagen);
         const orden = parseInt(state.postuser.post.orden) + 1;
         console.log('orden ', orden)
-
-        if (categoria == 'Novedades') {
-
-            // primero obtener la referencia de la imagen
-
-
+           
             try {
 
                 const onlyPost = collection(db, "Posts");
@@ -81,12 +71,12 @@ const BlogFile = () => {
                     Detail: detalle,
                     Photo: url,
                     Tag: 'Posts',
-                    Titulo: titulo,
+                    Articulo: articulo,
+                    Precio:precio,
                     orden: orden
                 };
 
                 await addDoc(onlyPost, dataToCreate);
-                dispatch(postSuccess(dataToCreate))
                 dispatch(postArraySuccess(dataToCreate))
                 setLoading(false)
                 Swal.fire({
@@ -112,12 +102,7 @@ const BlogFile = () => {
 
             }
 
-        } else {
-            console.log('logica herramientas')
-            setLoading(false)
-            // falta realizar la logica para herramientas 
-
-        }
+       
     };
 
     return (
@@ -136,28 +121,26 @@ const BlogFile = () => {
             </Typography>
             {loading && <CircularProgress />}
             <form onSubmit={handleSubmit}>
-                <FormControl fullWidth variant="outlined" margin="normal">
-                    <InputLabel id="categoria-label">Categoría</InputLabel>
-                    <Select
-                        labelId="categoria-label"
-                        id="categoria"
-                        label="Categoría"
-                        value={categoria}
-                        onChange={handleCategoriaChange}
-                    >
-                        <MenuItem value="Novedades">Novedades</MenuItem>
-                        <MenuItem value="Herramientas">Herramientas</MenuItem>
-                    </Select>
-                </FormControl>
+
                 <TextField
-                    label="Título"
+                    label="Articulo"
                     variant="outlined"
                     fullWidth
-                    value={titulo}
-                    onChange={handleTituloChange}
+                    value={articulo}
+                    onChange={handlearticuloChange}
                     margin="normal"
                 />
-               
+
+                <TextField
+                    label="Precio"
+                    variant="outlined"
+                    type='number'
+                    fullWidth
+                    value={precio}
+                    onChange={handlePrecioChange}
+                    margin="normal"
+                />
+
                 <TextField
                     label="Descripcion"
                     variant="outlined"
@@ -194,7 +177,7 @@ const BlogFile = () => {
                     variant="contained"
                     color="primary"
                     fullWidth
-                    disabled={!categoria || !imagen}
+                    disabled={!articulo || !imagen}
                     sx={{ marginTop: '20px' }}
                 >
                     Subir

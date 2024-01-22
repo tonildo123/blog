@@ -1,20 +1,16 @@
 /* eslint-disable */
 import * as React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Hidden, Button, Tooltip, MenuItem } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import { useTheme } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 const menuDrawerUnlogged = [{ 'label': 'Inicio', 'ruta': '/nosotros' },
-                            { 'label': 'Quienes somos', 'ruta': '/nosotros' },
-                            { 'label': 'Preguntas frecuentes', 'ruta': '/nosotros' },
-                            { 'label': 'Suscribirse', 'ruta': '/nosotros' },
-                            { 'label': 'Login', 'ruta': '/login/admin' },];
+{ 'label': 'Login', 'ruta': '/login/admin' },];
 
-const menuDrawerLogged = [{ 'label': 'Cambiar foto de portada', 'ruta': '/home' },
-                         ]; 
+const menuDrawerLogged = [{ 'label': 'Home', 'ruta': '/home' },
+];
 
 
 function NavBar() {
@@ -78,80 +74,44 @@ function NavBar() {
                 display: { xs: 'block', md: 'none', color: 'black' },
               }}
             >
-               {!logged && menuDrawerUnlogged.map((page) => (
-                                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
-                                    <Typography component={NavLink}
-                                        to={`${page.ruta}`} textAlign="center" style={{ color: 'black' }}>{page.label}</Typography>
-                                </MenuItem>
-                            ))}
-                            {logged && menuDrawerLogged.map((page) => (
-                                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
-                                    <Typography 
-                                    component={NavLink}
-                                    to={`${page.ruta}`} 
-                                    textAlign="center" 
-                                    style={{ color: 'black' }}>{page.label}</Typography>
-                                </MenuItem>
-                            ))}
+              {!logged && menuDrawerUnlogged.map((page) => (
+                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                  <Typography component={NavLink}
+                    to={`${page.ruta}`} textAlign="center" style={{ color: 'black' }}>{page.label}</Typography>
+                </MenuItem>
+              ))}
+              {logged && menuDrawerLogged.map((page) => (
+                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                  <Typography
+                    component={NavLink}
+                    to={`${page.ruta}`}
+                    textAlign="center"
+                    style={{ color: 'black' }}>{page.label}</Typography>
+                </MenuItem>
+              ))}
             </Menu>
             {/**para el menu en mobile */}
           </Box>
 
-          <img src="https://firebasestorage.googleapis.com/v0/b/mi-mascota-a3b05.appspot.com/o/AssetsFolder%2Fguia%20mipyme%20LOGOP%20TRANSPARENTE.png?alt=media&token=cae5b6b7-ec10-43af-bbc7-f5ac87501336"
+          <img src="https://firebasestorage.googleapis.com/v0/b/mi-mascota-a3b05.appspot.com/o/AssetsFolder%2Ficonoecommerce.PNG?alt=media&token=1e562765-58d5-4f43-9a0a-ef3124927b03"
             alt="Logo" style={{
-              width: '100px', height: '40px', marginRight: '8px',
+              width: '40px', height: '40px', marginRight: '8px',
               display: theme.breakpoints.up('md') ? 'flex' : 'flex',
             }} />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-            {!logged && 
-            menuDrawerUnlogged.filter(page=> page.label !=  'Suscribirse')
-            .map((page) => (
-              <Button
-                key={page}
-                component={NavLink}
-                to={`${page.ruta}`}
-                sx={{ my: 2, color: 'black', display: 'block' }}
-              >
-                {page.label}
-              </Button>
-            ))}
-          </Box>
-          <Box>
-            <Box
-              display="flex"
-              alignItems="center"
-            > <Tooltip title="Buscar aqui">
-                <IconButton onClick={handleOpenSearchMenu} sx={{ px: 3 }}>
-                  <SearchIcon />
-                </IconButton>
-              </Tooltip>
-              <Hidden mdDown>
-                <Typography variant="body1" sx={{ color: 'black', px: 1, backgroundColor: '#D5DBDB' }}>
-                  Suscribirse
-                </Typography>
-              </Hidden>
-            </Box>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElSearch}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElSearch)}
-              onClose={handleCloseSearchMenu}
-            >
-              <MenuItem>
-                <input type="text" placeholder="Buscar..." />
-              </MenuItem>
-            </Menu>
+            {!logged &&
+              menuDrawerUnlogged.filter(page => page.label != 'Suscribirse')
+                .map((page) => (
+                  <Button
+                    key={page}
+                    component={NavLink}
+                    to={`${page.ruta}`}
+                    sx={{ my: 2, color: 'black', display: 'block' }}
+                  >
+                    {page.label}
+                  </Button>
+                ))}
           </Box>
         </Toolbar>
       </Container>

@@ -30,7 +30,8 @@ const Posts = () => {
             Detail: postsData[0].Detail,
             Photo: postsData[0].Photo,
             Tag: postsData[0].Tag,
-            Titulo: postsData[0].Titulo,
+            Articulo: postsData[0].Articulo,
+            Precio: postsData[0].Precio,
             orden: postsData[0].orden,
           };
 
@@ -47,7 +48,8 @@ const Posts = () => {
                 Detail: posts[i].Detail,
                 Photo: posts[i].Photo,
                 Tag: posts[i].Tag,
-                Titulo: posts[i].Titulo,
+                Articulo: posts[i].Articulo,
+                Precio: posts[i].Precio,
                 orden: posts[i].orden,
               };
       
@@ -67,7 +69,7 @@ const Posts = () => {
     return (
         <Box mt={1} textAlign="center">
             <Typography variant="h4" color="grey" gutterBottom>
-                Novedades
+                Articulos
             </Typography>
             {posts.length === 0
                 ? <LoadingComponent />
