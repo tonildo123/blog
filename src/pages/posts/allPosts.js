@@ -38,7 +38,7 @@ const AllPosts = () => {
                 />
                 <CardContent sx={{ display: 'flex',flexDirection:'column', px: 1 }}>                
                   <Typography sx={{ width: '100%',fontWeight:'bold', textAlign: 'center' }}>
-                    {truncateTextTitle(postItem.Titulo, 40)}
+                    {truncateTextTitle(postItem.Titulo, 40)} 
                   </Typography>
                   <Typography  sx={{ width: '100%', px: 2, textAlign: 'left' }}>
                     {truncateText(postItem.Detail, 100)}

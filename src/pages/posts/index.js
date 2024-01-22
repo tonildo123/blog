@@ -41,17 +41,12 @@ const ResponsiveCard = (card) => {
                 />
                 <CardContent>
                     <Typography variant="h6" gutterBottom>
-                        {state.card.Titulo}
+                        {state.card.Articulo} $ {state.card.Precio}                 
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
                         {renderLinksInText(state.card.Detail)}
-                        {renderLinksInText(state.card.Detail)}
                     </Typography>
                 </CardContent>
-                <Box my={1} sx={{ display: 'flex', width:'100%', justifyContent:'space-between' }}>
-                    <Button>{`<< `}ANTERIOR</Button>
-                    <Button>SIGUIENTE{` >>`}</Button>
-                </Box>
             </Card>
         </Box>
     );
