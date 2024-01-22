@@ -41,11 +41,11 @@ const CardPosts = ({ lastPost, posts }) => {
               alt="Imagen 1"
               style={{ width: '100%', maxHeight: '70%', objectFit: 'contain' }}
             />
-            <CardContent sx={{ display: 'flex', flexDirection: 'column', py: 1}}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', py: 1 }}>
               <Typography sx={{ width: '100%', height: '20%', fontWeight: 'bold', textAlign: 'left' }}>
                 {truncateTextTitle(lastPost.Articulo, 80)} - $ {lastPost.Precio}
               </Typography>
-              <Typography sx={{ width: '100%', height: '80%', mb:1, textAlign: 'left' }}>
+              <Typography sx={{ width: '100%', height: '80%', mb: 1, textAlign: 'left' }}>
                 {truncateText(lastPost.Detail, 180)}
               </Typography>
             </CardContent>
@@ -61,11 +61,11 @@ const CardPosts = ({ lastPost, posts }) => {
                 alt="Imagen 1"
                 style={{ width: '30%', objectFit: 'contain' }}
               />
-              <CardContent sx={{ display: 'flex', flexDirection: 'column', py: 1}}>
-                <Typography sx={{width: '100%', height: '20%', fontWeight: 'bold', textAlign: 'left' }}>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', py: 1 }}>
+                <Typography sx={{ width: '100%', height: '20%', fontWeight: 'bold', textAlign: 'left' }}>
                   {truncateTextTitle(postItem.Articulo, 40)}  - $ {lastPost.Precio}
                 </Typography>
-                <Typography sx={{  width: '100%', height: '80%', mb:1, textAlign: 'left' }}>
+                <Typography sx={{ width: '100%', height: '80%', mb: 1, textAlign: 'left' }}>
                   {truncateText(postItem.Detail, 100)}
                 </Typography>
               </CardContent>
