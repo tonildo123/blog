@@ -1,6 +1,8 @@
 
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import StoreIcon from '@mui/icons-material/Store';
 
 
 import './style.css'
@@ -30,7 +32,12 @@ const ResponsiveCard = (card) => {
         ));
     };
 
-
+    const sendWathsapp = () => {
+        const phoneNumber = '3814757398';
+        const message = `¡Hola! Estoy interesado en comprar ${state.card.Articulo} por $${state.card.Precio}. ¿Podemos discutir los detalles?\n![Imagen](${state.card.Photo})`;
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    };
     return (
         <Box mt={4} className="centered-card">
             <Card className="responsive-card">
@@ -41,11 +48,17 @@ const ResponsiveCard = (card) => {
                 />
                 <CardContent>
                     <Typography variant="h6" gutterBottom>
-                        {state.card.Articulo} $ {state.card.Precio}                 
+                        {state.card.Articulo} $ {state.card.Precio}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
                         {renderLinksInText(state.card.Detail)}
                     </Typography>
+                    <Button
+                        fullWidth
+                        startIcon={<StoreIcon />}
+                        endIcon={<WhatsAppIcon />}
+                        onClick={sendWathsapp}
+                        variant="contained">Comprar</Button>
                 </CardContent>
             </Card>
         </Box>
